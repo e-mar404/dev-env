@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+mkdir ~/backgrounds ~/code ~/personal ~/work ~/plugins ~/projects
+
+git clone https://github.com/e-mar404/.dotfiles ~/.dotfiles
+git clone https://github.com/e-mar404/keyboard ~/keyboard
+
+pushd ~/.dotfiles
+stow tmux -v
+stow nvim -v
+stow .local -v
+cp .zshrc ~/.zshrc
+popd

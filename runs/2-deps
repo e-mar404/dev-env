@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# for neovim
+brew install coreutils ninja cmake gettext curl gcc clang
+xcode-select --install
+
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+# other tools
+brew install fzf zoxide stow tmux zsh zsh-completions
+
+chsh -s $(which zsh)
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
