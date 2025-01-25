@@ -5,7 +5,7 @@ filter=""
 dry="0"
 
 cd $script_dir
-scripts=$(find ./runs -maxdepth 1 -mindepth 1 -type f | sort)
+scripts=$(find ./runs -maxdepth 1 -mindepth 1 -type f -regex ".*/[0-9]*-[a-z]*" | sort)
 
 while [[ $# > 0 ]]; do
   if [[ "$1" == "--dry" ]]; then

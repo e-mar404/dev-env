@@ -1,23 +1,16 @@
 #!/usr/bin/env bash
 
-# for neovim
-brew install coreutils ninja cmake gettext curl gcc libintl
+while IFS="\n"; read -r dep; do
+  brew install $dep
+done < ./runs/dependencies.txt
+
 xcode-select --install
 
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# other tools
-brew install fzf zoxide stow tmux zsh zsh-completions lazygit tpm gh gpg
-
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 chsh -s $(which zsh)
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-brew install powerlevel10k
-echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
